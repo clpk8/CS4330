@@ -13,7 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import taskers.*;
@@ -31,7 +33,16 @@ public class NotificationsUIController implements Initializable, Notifiable {
     private Task1 task1;
     private Task2 task2;
     private Task3 task3;
+    @FXML
+    private Button task1_button;
+    @FXML
+    private Button task2_button; 
+    @FXML
+    private Button task3_button;
     
+    
+    enum State { stop, start}
+    State s1,s2,s3;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -53,7 +64,16 @@ public class NotificationsUIController implements Initializable, Notifiable {
         if (task1 == null) {
             task1 = new Task1(2147483647, 1000000);
             task1.setNotificationTarget(this);
+            task1_button.textProperty().setValue("End task 1");
             task1.start();
+            s1 = State.start;
+        }
+        else if(s1 == State.stop){
+            System.out.println("stop task 1");
+        	task1.end();
+        	task1 = null;
+        	task1_button.textProperty().setValue("Start Task 1");
+        	s1 = State.stop;
         }
     }
     
@@ -61,6 +81,7 @@ public class NotificationsUIController implements Initializable, Notifiable {
     public void notify(String message) {
         if (message.equals("Task1 done.")) {
             task1 = null;
+            task1_button.textProperty().setValue("Start task 1");
         }
         textArea.appendText(message + "\n");
     }
@@ -75,7 +96,15 @@ public class NotificationsUIController implements Initializable, Notifiable {
             });
             
             task2.start();
+            s2 = State.start;
         }        
+         else if(s2 == State.stop){
+            System.out.println("stop task 2");
+        	task2.end();
+        	task2 = null;
+        	task2_button.textProperty().setValue("Start Task 2");
+        	s2 = State.stop;
+        }
     }
     
     @FXML
@@ -89,6 +118,14 @@ public class NotificationsUIController implements Initializable, Notifiable {
             });
             
             task3.start();
+            s3 = State.start;
+        }
+        else if(s3 == State.stop){
+            System.out.println("stop task 3");
+        	task3.end();
+        	task3 = null;
+        	task3_button.textProperty().setValue("Start Task 3");
+        	s3 = State.stop;
         }
     } 
 }
