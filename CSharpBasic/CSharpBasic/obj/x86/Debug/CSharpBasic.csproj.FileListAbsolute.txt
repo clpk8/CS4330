@@ -1,0 +1,5 @@
+/Users/Ben/C#Projects/CSharpBasic/CSharpBasic/bin/Debug/CSharpBasic.exe
+/Users/Ben/C#Projects/CSharpBasic/CSharpBasic/bin/Debug/CSharpBasic.pdb
+/Users/Ben/C#Projects/CSharpBasic/CSharpBasic/obj/x86/Debug/CSharpBasic.csproj.CoreCompileInputs.cache
+/Users/Ben/C#Projects/CSharpBasic/CSharpBasic/obj/x86/Debug/CSharpBasic.exe
+/Users/Ben/C#Projects/CSharpBasic/CSharpBasic/obj/x86/Debug/CSharpBasic.pdb
